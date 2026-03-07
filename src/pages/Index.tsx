@@ -64,6 +64,12 @@ const Index = () => {
               <p className="text-muted-foreground leading-relaxed text-lg mb-6">
                 La sophrologie est une méthode douce qui associe <strong className="text-foreground">respiration</strong>, <strong className="text-foreground">détente corporelle</strong> et <strong className="text-foreground">visualisation</strong>.
               </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Elle aide à mieux gérer le stress, à apaiser les émotions et à relâcher les tensions accumulées dans le corps. C'est une approche globale qui agit à la fois sur le mental et sur le physique.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Contrairement à certaines idées reçues, la sophrologie ne demande aucune compétence particulière. Il suffit de se laisser guider par la voix et de suivre des exercices simples, adaptés à chacun.
+              </p>
               <p className="text-muted-foreground leading-relaxed">
                 Simple et accessible, elle peut se pratiquer facilement grâce à des audios guidés, sans expérience préalable.
               </p>
