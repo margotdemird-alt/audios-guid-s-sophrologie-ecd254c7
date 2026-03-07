@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ShieldCheck, Brain as BrainIcon, Bed, Leaf, HeartPulse } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroBg from "@/assets/hero-bg.jpg";
 import margotImg from "@/assets/margot-portrait.jpg";
@@ -50,22 +51,45 @@ const Index = () => {
 
       {/* Qu'est-ce que la sophrologie */}
       <section className="py-20 md:py-28 bg-warm-white">
-        <div className="container max-w-3xl text-center fade-in-up">
-          <h2 className="text-2xl md:text-4xl font-semibold mb-8 text-foreground">Qu'est-ce que la sophrologie ?</h2>
-          <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
-            La sophrologie est une méthode qui associe respiration, détente corporelle et visualisation. Elle permet de :
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-lg mx-auto">
-            {["Réguler le stress", "Apaiser le système nerveux", "Relâcher les tensions du corps", "Améliorer le sommeil", "Retrouver un état de calme intérieur"].map((item) => (
-              <div key={item} className="flex items-start gap-3 p-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                <span className="text-foreground">{item}</span>
-              </div>
-            ))}
+        <div className="container max-w-5xl fade-in-up">
+          <div className="text-center mb-14">
+            <p className="text-primary font-medium text-sm uppercase tracking-widest mb-3">Comprendre</p>
+            <h2 className="text-2xl md:text-4xl font-semibold text-foreground mb-4">Qu'est-ce que la sophrologie ?</h2>
+            <div className="w-16 h-0.5 bg-primary/40 mx-auto" />
           </div>
-          <p className="text-muted-foreground mt-8 text-base">
-            La sophrologie est simple, accessible et peut se pratiquer facilement grâce à des audios guidés.
-          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-14">
+            {/* Left: description */}
+            <div>
+              <p className="text-muted-foreground leading-relaxed text-lg mb-6">
+                La sophrologie est une méthode douce qui associe <strong className="text-foreground">respiration</strong>, <strong className="text-foreground">détente corporelle</strong> et <strong className="text-foreground">visualisation</strong>.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Simple et accessible, elle peut se pratiquer facilement grâce à des audios guidés, sans expérience préalable.
+              </p>
+            </div>
+
+            {/* Right: benefit cards */}
+            <div className="space-y-3">
+              {[
+                { icon: ShieldCheck, label: "Réguler le stress", desc: "Retrouver un état de calme face aux pressions quotidiennes" },
+                { icon: HeartPulse, label: "Apaiser le système nerveux", desc: "Activer la détente profonde du corps" },
+                { icon: Leaf, label: "Relâcher les tensions", desc: "Libérer les tensions physiques accumulées" },
+                { icon: Bed, label: "Améliorer le sommeil", desc: "Favoriser un endormissement plus serein" },
+                { icon: BrainIcon, label: "Retrouver le calme intérieur", desc: "Cultiver un espace mental apaisé" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-start gap-4 bg-sand-light rounded-xl p-4 hover:shadow-soft transition-all duration-300">
+                  <div className="w-10 h-10 rounded-lg bg-warm-white flex items-center justify-center shrink-0 shadow-soft">
+                    <item.icon className="text-primary" size={20} />
+                  </div>
+                  <div>
+                    <h3 className="text-foreground font-medium text-sm">{item.label}</h3>
+                    <p className="text-muted-foreground text-xs leading-relaxed mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
