@@ -89,8 +89,8 @@ const Index = () => {
                     <item.icon className="text-primary" size={20} />
                   </div>
                   <div>
-                    <h3 className="text-foreground font-medium text-sm">{item.label}</h3>
-                    <p className="text-muted-foreground text-xs leading-relaxed mt-0.5">{item.desc}</p>
+                    <h3 className="text-foreground font-medium text-base">{item.label}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mt-0.5">{item.desc}</p>
                   </div>
                 </div>
               ))}
