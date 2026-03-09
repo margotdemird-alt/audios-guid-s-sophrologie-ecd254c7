@@ -7,11 +7,11 @@ import margotImg from "@/assets/margot-portrait.jpg";
 import { MapPin, Clock, Heart, Brain, Moon, Sparkles, Wind, ArrowRight } from "lucide-react";
 
 const cycles = [
-  { title: "Gestion du stress", description: "Apprendre à relâcher la pression mentale et apaiser le système nerveux.", icon: Brain },
-  { title: "Équilibre émotionnel", description: "Mieux comprendre et réguler ses émotions.", icon: Heart },
-  { title: "Sommeil", description: "Préparer le corps et l'esprit à un sommeil plus réparateur.", icon: Moon },
-  { title: "Détente corporelle", description: "Relâcher les tensions physiques accumulées.", icon: Wind },
-  { title: "Énergie et récupération", description: "Retrouver clarté mentale et vitalité.", icon: Sparkles },
+  { title: "Cycle Motivation", description: "Retrouver l'élan à son rythme.", icon: Heart, available: true, kofiUrl: "https://ko-fi.com/s/f7529011f4" },
+  { title: "Cycle Énergie", description: "Sortir de la fatigue persistante.", icon: Sparkles, available: true, kofiUrl: "https://ko-fi.com/s/20030c5d41" },
+  { title: "Cycle Sommeil", description: "Retrouver le chemin du sommeil.", icon: Moon, available: true, kofiUrl: "https://ko-fi.com/s/448e43182a" },
+  { title: "Cycle Régulation du stress", description: "Apaiser les tensions du quotidien.", icon: Brain, available: false },
+  { title: "Cycle Douleurs corporelles", description: "Relâcher les tensions installées.", icon: Wind, available: false },
 ];
 
 const benefits = [
@@ -125,15 +125,19 @@ const Index = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {cycles.map((cycle) => (
-              <div key={cycle.title} className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col">
-                <cycle.icon className="text-primary mb-4" size={28} />
+              <div key={cycle.title} className={`bg-card rounded-2xl p-8 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col ${!cycle.available ? 'opacity-75' : ''}`}>
+                <cycle.icon className={`${cycle.available ? 'text-primary' : 'text-muted-foreground'} mb-4`} size={28} />
                 <h3 className="font-serif text-lg font-semibold mb-3 text-foreground">{cycle.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">{cycle.description}</p>
-                <Button variant="outline" size="sm" asChild className="self-start">
-                  <Link to={`/audios/${cycle.title.toLowerCase().replace(/\s+/g, '-').replace(/[éè]/g, 'e')}`}>
-                    Découvrir le programme <ArrowRight size={14} />
-                  </Link>
-                </Button>
+                {cycle.available ? (
+                  <Button variant="outline" size="sm" asChild className="self-start">
+                    <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">
+                      Accéder au cycle <ArrowRight size={14} />
+                    </a>
+                  </Button>
+                ) : (
+                  <span className="text-xs text-muted-foreground">Bientôt disponible</span>
+                )}
               </div>
             ))}
           </div>

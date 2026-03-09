@@ -7,19 +7,19 @@ const availableCycles = [
     title: "Cycle Motivation",
     subtitle: "Retrouver l'élan à son rythme",
     icon: Flame,
-    kofiUrl: "https://ko-fi.com",
+    kofiUrl: "https://ko-fi.com/s/f7529011f4",
   },
   {
     title: "Cycle Énergie",
     subtitle: "Sortir de la fatigue persistante",
     icon: Zap,
-    kofiUrl: "https://ko-fi.com",
+    kofiUrl: "https://ko-fi.com/s/20030c5d41",
   },
   {
     title: "Cycle Sommeil",
     subtitle: "Retrouver le chemin du sommeil",
     icon: Moon,
-    kofiUrl: "https://ko-fi.com",
+    kofiUrl: "https://ko-fi.com/s/448e43182a",
   },
 ];
 
@@ -39,7 +39,7 @@ const upcomingCycles = [
 const Audios = () => {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-warm-white">
+      <section className="py-16 md:py-24 bg-sand-light">
         <div className="container max-w-4xl">
           <div className="text-center mb-16 fade-in-up">
             <h1 className="text-3xl md:text-5xl font-semibold mb-6 text-foreground">Les cycles d'audios guidés</h1>
