@@ -39,7 +39,7 @@ const upcomingCycles = [
 const Audios = () => {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-warm-white">
+      <section className="py-16 md:py-24 bg-sand-light">
         <div className="container max-w-4xl">
           <div className="text-center mb-16 fade-in-up">
             <h1 className="text-3xl md:text-5xl font-semibold mb-6 text-foreground">Les cycles d'audios guidés</h1>

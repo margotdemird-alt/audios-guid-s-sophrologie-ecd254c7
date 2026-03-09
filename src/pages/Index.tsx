@@ -125,15 +125,19 @@ const Index = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {cycles.map((cycle) => (
-              <div key={cycle.title} className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col">
-                <cycle.icon className="text-primary mb-4" size={28} />
+              <div key={cycle.title} className={`bg-card rounded-2xl p-8 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col ${!cycle.available ? 'opacity-75' : ''}`}>
+                <cycle.icon className={`${cycle.available ? 'text-primary' : 'text-muted-foreground'} mb-4`} size={28} />
                 <h3 className="font-serif text-lg font-semibold mb-3 text-foreground">{cycle.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">{cycle.description}</p>
-                <Button variant="outline" size="sm" asChild className="self-start">
-                  <Link to={`/audios/${cycle.title.toLowerCase().replace(/\s+/g, '-').replace(/[éè]/g, 'e')}`}>
-                    Découvrir le programme <ArrowRight size={14} />
-                  </Link>
-                </Button>
+                {cycle.available ? (
+                  <Button variant="outline" size="sm" asChild className="self-start">
+                    <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">
+                      Accéder au cycle <ArrowRight size={14} />
+                    </a>
+                  </Button>
+                ) : (
+                  <span className="text-xs text-muted-foreground">Bientôt disponible</span>
+                )}
               </div>
             ))}
           </div>
