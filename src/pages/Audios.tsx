@@ -7,19 +7,19 @@ const availableCycles = [
     title: "Cycle Motivation",
     subtitle: "Retrouver l'élan à son rythme",
     icon: Flame,
-    kofiUrl: "https://ko-fi.com",
+    kofiUrl: "https://ko-fi.com/s/f7529011f4",
   },
   {
     title: "Cycle Énergie",
     subtitle: "Sortir de la fatigue persistante",
     icon: Zap,
-    kofiUrl: "https://ko-fi.com",
+    kofiUrl: "https://ko-fi.com/s/20030c5d41",
   },
   {
     title: "Cycle Sommeil",
     subtitle: "Retrouver le chemin du sommeil",
     icon: Moon,
-    kofiUrl: "https://ko-fi.com",
+    kofiUrl: "https://ko-fi.com/s/448e43182a",
   },
 ];
 
