@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <h3 className="text-xl font-semibold mb-3 text-foreground">
-              Margot <span className="text-primary font-normal">Sophrologie</span>
+              Les Pauses Sophro <span className="text-primary font-normal">de Margot</span>
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Des audios guidés pour retrouver calme, équilibre et bien-être au quotidien.
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border/50 pt-6 text-center">
-          <p className="text-xs text-muted-foreground">© 2026 Margot Sophrologie. Tous droits réservés.</p>
+          <p className="text-xs text-muted-foreground">© 2026 Les Pauses Sophro de Margot. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
