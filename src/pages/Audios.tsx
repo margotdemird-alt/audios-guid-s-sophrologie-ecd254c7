@@ -1,15 +1,39 @@
-import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Brain, Heart, Moon, Wind, Sparkles, Coffee, ArrowRight } from "lucide-react";
+import { Flame, Zap, Moon, Brain, Heart, ArrowRight, Clock } from "lucide-react";
 
-const cycles = [
-  { slug: "gestion-du-stress", title: "Gestion du stress", description: "Une série d'audios guidés pour relâcher la pression mentale et calmer le système nerveux.", content: ["Exercices de respiration", "Détente corporelle", "Relâchement mental"], icon: Brain },
-  { slug: "equilibre-emotionnel", title: "Équilibre émotionnel", description: "Mieux comprendre et réguler ses émotions au quotidien.", content: ["Accueil des émotions", "Respiration apaisante", "Visualisation positive"], icon: Heart },
-  { slug: "sommeil", title: "Sommeil", description: "Préparer le corps et l'esprit à un sommeil plus réparateur.", content: ["Détente progressive", "Respiration du soir", "Lâcher prise mental"], icon: Moon },
-  { slug: "detente-corporelle", title: "Détente corporelle", description: "Relâcher les tensions physiques accumulées dans le corps.", content: ["Scan corporel", "Relâchement musculaire", "Détente profonde"], icon: Wind },
-  { slug: "pause-mentale", title: "Pause mentale", description: "Retrouver de la clarté et calmer l'agitation mentale.", content: ["Pause respiration", "Recentrage", "Calme intérieur"], icon: Coffee },
-  { slug: "energie-et-recuperation", title: "Énergie et récupération", description: "Retrouver clarté mentale et vitalité.", content: ["Respiration dynamisante", "Activation corporelle", "Visualisation énergisante"], icon: Sparkles },
+const availableCycles = [
+  {
+    title: "Cycle Motivation",
+    subtitle: "Retrouver l'élan à son rythme",
+    icon: Flame,
+    kofiUrl: "https://ko-fi.com",
+  },
+  {
+    title: "Cycle Énergie",
+    subtitle: "Sortir de la fatigue persistante",
+    icon: Zap,
+    kofiUrl: "https://ko-fi.com",
+  },
+  {
+    title: "Cycle Sommeil",
+    subtitle: "Retrouver le chemin du sommeil",
+    icon: Moon,
+    kofiUrl: "https://ko-fi.com",
+  },
+];
+
+const upcomingCycles = [
+  {
+    title: "Cycle Régulation du stress",
+    subtitle: "Apaiser les tensions du quotidien",
+    icon: Brain,
+  },
+  {
+    title: "Cycle Douleurs corporelles",
+    subtitle: "Relâcher les tensions installées",
+    icon: Heart,
+  },
 ];
 
 const Audios = () => {
@@ -24,25 +48,35 @@ const Audios = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {cycles.map((cycle) => (
-              <div key={cycle.slug} className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col">
+          {/* Available cycles */}
+          <h2 className="font-serif text-2xl font-semibold mb-6 text-foreground">Cycles disponibles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            {availableCycles.map((cycle) => (
+              <div key={cycle.title} className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col">
                 <cycle.icon className="text-primary mb-4" size={28} />
-                <h2 className="font-serif text-xl font-semibold mb-3 text-foreground">{cycle.title}</h2>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{cycle.description}</p>
-                <ul className="mb-6 flex-1">
-                  {cycle.content.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground py-1">
-                      <div className="w-1 h-1 rounded-full bg-primary shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Button variant="outline" size="sm" asChild className="self-start">
-                  <Link to={`/audios/${cycle.slug}`}>
-                    Accéder aux audios <ArrowRight size={14} />
-                  </Link>
+                <h3 className="font-serif text-xl font-semibold mb-1 text-foreground">{cycle.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">{cycle.subtitle}</p>
+                <Button variant="outline" size="sm" asChild className="self-start mt-auto">
+                  <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">
+                    Accéder au cycle <ArrowRight size={14} />
+                  </a>
                 </Button>
+              </div>
+            ))}
+          </div>
+
+          {/* Upcoming cycles */}
+          <h2 className="font-serif text-2xl font-semibold mb-6 text-foreground">Bientôt disponibles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {upcomingCycles.map((cycle) => (
+              <div key={cycle.title} className="bg-card rounded-2xl p-8 shadow-soft opacity-75 flex flex-col">
+                <cycle.icon className="text-muted-foreground mb-4" size={28} />
+                <h3 className="font-serif text-xl font-semibold mb-1 text-foreground">{cycle.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{cycle.subtitle}</p>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-auto">
+                  <Clock size={12} />
+                  <span>À venir</span>
+                </div>
               </div>
             ))}
           </div>
