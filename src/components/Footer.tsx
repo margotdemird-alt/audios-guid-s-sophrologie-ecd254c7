@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border/50 pt-6 text-center">
-          <p className="text-xs text-muted-foreground">© 2026 Margot Sophrologie. Tous droits réservés.</p>
+          <p className="text-xs text-muted-foreground">© 2026 Les Pauses Sophro de Margot. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
