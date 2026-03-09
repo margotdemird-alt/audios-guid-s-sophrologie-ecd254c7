@@ -16,7 +16,7 @@ const cycles = [
 
 const benefits = [
   { icon: MapPin, title: "Pratiquer n'importe où", description: "Chez vous, au bureau ou en déplacement." },
-  { icon: Clock, title: "Séances courtes", description: "De 3 à 10 minutes seulement." },
+  { icon: Clock, title: "Séances courtes", description: "De 8 à 12 minutes seulement." },
   { icon: Sparkles, title: "Facile à intégrer", description: "S'adapte à votre rythme quotidien." },
   { icon: Heart, title: "Réguler les émotions", description: "Retrouver un équilibre intérieur." },
   { icon: Wind, title: "Détente et récupération", description: "Relâcher les tensions accumulées." },
