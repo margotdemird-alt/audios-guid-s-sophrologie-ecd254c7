@@ -7,11 +7,11 @@ import margotImg from "@/assets/margot-portrait.jpg";
 import { MapPin, Clock, Heart, Brain, Moon, Sparkles, Wind, ArrowRight } from "lucide-react";
 
 const cycles = [
-  { title: "Gestion du stress", description: "Apprendre à relâcher la pression mentale et apaiser le système nerveux.", icon: Brain },
-  { title: "Équilibre émotionnel", description: "Mieux comprendre et réguler ses émotions.", icon: Heart },
-  { title: "Sommeil", description: "Préparer le corps et l'esprit à un sommeil plus réparateur.", icon: Moon },
-  { title: "Détente corporelle", description: "Relâcher les tensions physiques accumulées.", icon: Wind },
-  { title: "Énergie et récupération", description: "Retrouver clarté mentale et vitalité.", icon: Sparkles },
+  { title: "Cycle Motivation", description: "Retrouver l'élan à son rythme.", icon: Heart, available: true, kofiUrl: "https://ko-fi.com/s/f7529011f4" },
+  { title: "Cycle Énergie", description: "Sortir de la fatigue persistante.", icon: Sparkles, available: true, kofiUrl: "https://ko-fi.com/s/20030c5d41" },
+  { title: "Cycle Sommeil", description: "Retrouver le chemin du sommeil.", icon: Moon, available: true, kofiUrl: "https://ko-fi.com/s/448e43182a" },
+  { title: "Cycle Régulation du stress", description: "Apaiser les tensions du quotidien.", icon: Brain, available: false },
+  { title: "Cycle Douleurs corporelles", description: "Relâcher les tensions installées.", icon: Wind, available: false },
 ];
 
 const benefits = [
