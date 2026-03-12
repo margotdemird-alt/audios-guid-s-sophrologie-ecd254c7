@@ -67,14 +67,14 @@ const Audios = () => {
 
           {/* Upcoming cycles */}
           <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-8 text-foreground">Bientôt disponibles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {upcomingCycles.map((cycle) => (
-              <div key={cycle.title} className="bg-card rounded-2xl p-8 shadow-soft opacity-75 flex flex-col">
-                <cycle.icon className="text-muted-foreground mb-4" size={28} />
-                <h3 className="font-serif text-xl font-semibold mb-1 text-foreground">{cycle.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{cycle.subtitle}</p>
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground mt-auto">
-                  <Clock size={12} />
+              <div key={cycle.title} className="bg-card rounded-2xl p-10 shadow-soft opacity-75 flex flex-col">
+                <cycle.icon className="text-muted-foreground mb-5" size={36} />
+                <h3 className="font-serif text-3xl font-semibold mb-3 text-foreground">{cycle.title}</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed mb-6">{cycle.subtitle}</p>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mt-auto">
+                  <Clock size={16} />
                   <span>À venir</span>
                 </div>
               </div>
