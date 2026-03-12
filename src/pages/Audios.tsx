@@ -49,13 +49,13 @@ const Audios = () => {
           </div>
 
           {/* Available cycles */}
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-8 text-foreground">Cycles disponibles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 sm:mb-8 text-foreground">Cycles disponibles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-16">
             {availableCycles.map((cycle) => (
-              <div key={cycle.title} className="bg-warm-white rounded-2xl p-10 shadow-card hover:shadow-lg transition-all duration-300 flex flex-col border border-border/50">
-                <cycle.icon className="text-primary mb-5" size={36} />
-                <h3 className="font-serif text-3xl font-semibold mb-3 text-foreground">{cycle.title}</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed mb-8">{cycle.subtitle}</p>
+              <div key={cycle.title} className="bg-warm-white rounded-2xl p-6 sm:p-10 shadow-card hover:shadow-lg transition-all duration-300 flex flex-col border border-border/50">
+                <cycle.icon className="text-primary mb-4 sm:mb-5" size={32} />
+                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-3 text-foreground">{cycle.title}</h3>
+                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">{cycle.subtitle}</p>
                 <Button variant="outline" size="lg" asChild className="self-start mt-auto hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors">
                   <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">
                     Accéder au cycle <ArrowRight size={18} />
@@ -66,13 +66,13 @@ const Audios = () => {
           </div>
 
           {/* Upcoming cycles */}
-          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-8 text-foreground">Bientôt disponibles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 sm:mb-8 text-foreground">Bientôt disponibles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {upcomingCycles.map((cycle) => (
-              <div key={cycle.title} className="bg-card rounded-2xl p-10 shadow-soft opacity-75 flex flex-col">
-                <cycle.icon className="text-muted-foreground mb-5" size={36} />
-                <h3 className="font-serif text-3xl font-semibold mb-3 text-foreground">{cycle.title}</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed mb-6">{cycle.subtitle}</p>
+              <div key={cycle.title} className="bg-card rounded-2xl p-6 sm:p-10 shadow-soft opacity-75 flex flex-col">
+                <cycle.icon className="text-muted-foreground mb-4 sm:mb-5" size={32} />
+                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-3 text-foreground">{cycle.title}</h3>
+                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">{cycle.subtitle}</p>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mt-auto">
                   <Clock size={16} />
                   <span>À venir</span>
