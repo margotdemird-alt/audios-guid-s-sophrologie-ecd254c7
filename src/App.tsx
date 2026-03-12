@@ -9,6 +9,9 @@ import CycleDetail from "./pages/CycleDetail";
 import HowToPractice from "./pages/HowToPractice";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import MentionsLegales from "./pages/MentionsLegales";
+import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
+import ConditionsUtilisation from "./pages/ConditionsUtilisation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +29,9 @@ const App = () => (
           <Route path="/comment-pratiquer" element={<HowToPractice />} />
           <Route path="/a-propos" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+          <Route path="/conditions-utilisation" element={<ConditionsUtilisation />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
