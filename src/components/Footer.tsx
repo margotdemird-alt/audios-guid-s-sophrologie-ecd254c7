@@ -38,9 +38,9 @@ const Footer = () => {
           <div>
             <h4 className="font-serif text-sm font-semibold mb-4 text-foreground uppercase tracking-wider">Informations</h4>
             <div className="flex flex-col gap-2.5 mb-6">
-              <span className="text-sm text-muted-foreground">Mentions légales</span>
-              <span className="text-sm text-muted-foreground">Politique de confidentialité</span>
-              <span className="text-sm text-muted-foreground">Conditions d'utilisation</span>
+              <Link to="/mentions-legales" className="text-sm text-muted-foreground hover:text-primary transition-colors">Mentions légales</Link>
+              <Link to="/politique-de-confidentialite" className="text-sm text-muted-foreground hover:text-primary transition-colors">Politique de confidentialité</Link>
+              <Link to="/conditions-utilisation" className="text-sm text-muted-foreground hover:text-primary transition-colors">Conditions d'utilisation</Link>
             </div>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/les_pauses_sophro_de_margot/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
