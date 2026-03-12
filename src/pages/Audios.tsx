@@ -53,12 +53,12 @@ const Audios = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {availableCycles.map((cycle) => (
               <div key={cycle.title} className="bg-warm-white rounded-2xl p-10 shadow-card hover:shadow-lg transition-all duration-300 flex flex-col border border-border/50">
-                <cycle.icon className="text-primary mb-5" size={32} />
-                <h3 className="font-serif text-2xl font-semibold mb-2 text-foreground">{cycle.title}</h3>
-                <p className="text-muted-foreground text-base leading-relaxed mb-8">{cycle.subtitle}</p>
-                <Button variant="outline" size="default" asChild className="self-start mt-auto hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors">
+                <cycle.icon className="text-primary mb-5" size={36} />
+                <h3 className="font-serif text-3xl font-semibold mb-3 text-foreground">{cycle.title}</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed mb-8">{cycle.subtitle}</p>
+                <Button variant="outline" size="lg" asChild className="self-start mt-auto hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors">
                   <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">
-                    Accéder au cycle <ArrowRight size={16} />
+                    Accéder au cycle <ArrowRight size={18} />
                   </a>
                 </Button>
               </div>
