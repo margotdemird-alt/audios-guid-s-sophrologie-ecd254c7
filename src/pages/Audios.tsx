@@ -66,7 +66,7 @@ const Audios = () => {
           </div>
 
           {/* Upcoming cycles */}
-          <h2 className="font-serif text-2xl font-semibold mb-6 text-foreground">Bientôt disponibles</h2>
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-8 text-foreground">Bientôt disponibles</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {upcomingCycles.map((cycle) => (
               <div key={cycle.title} className="bg-card rounded-2xl p-8 shadow-soft opacity-75 flex flex-col">
