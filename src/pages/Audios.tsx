@@ -49,16 +49,16 @@ const Audios = () => {
           </div>
 
           {/* Available cycles */}
-          <h2 className="font-serif text-2xl font-semibold mb-6 text-foreground">Cycles disponibles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-8 text-foreground">Cycles disponibles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {availableCycles.map((cycle) => (
-              <div key={cycle.title} className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-card transition-all duration-300 flex flex-col">
-                <cycle.icon className="text-primary mb-4" size={28} />
-                <h3 className="font-serif text-xl font-semibold mb-1 text-foreground">{cycle.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">{cycle.subtitle}</p>
-                <Button variant="outline" size="sm" asChild className="self-start mt-auto">
+              <div key={cycle.title} className="bg-warm-white rounded-2xl p-10 shadow-card hover:shadow-lg transition-all duration-300 flex flex-col border border-border/50">
+                <cycle.icon className="text-primary mb-5" size={32} />
+                <h3 className="font-serif text-2xl font-semibold mb-2 text-foreground">{cycle.title}</h3>
+                <p className="text-muted-foreground text-base leading-relaxed mb-8">{cycle.subtitle}</p>
+                <Button variant="outline" size="default" asChild className="self-start mt-auto hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors">
                   <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">
-                    Accéder au cycle <ArrowRight size={14} />
+                    Accéder au cycle <ArrowRight size={16} />
                   </a>
                 </Button>
               </div>
