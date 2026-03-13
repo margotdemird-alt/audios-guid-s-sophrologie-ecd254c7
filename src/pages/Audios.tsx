@@ -43,8 +43,11 @@ const Audios = () => {
         <div className="container max-w-4xl">
           <div className="text-center mb-16 fade-in-up">
             <h1 className="text-3xl md:text-5xl font-semibold mb-6 text-foreground">Les cycles d'audios guidés</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-4">
               Chaque cycle propose une série d'audios courts pour vous accompagner vers plus de calme et de bien-être.
+            </p>
+            <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed italic">
+              Vous serez redirigé vers Ko-fi, une plateforme sécurisée de confiance, pour accéder et télécharger vos audios en toute simplicité.
             </p>
           </div>
 

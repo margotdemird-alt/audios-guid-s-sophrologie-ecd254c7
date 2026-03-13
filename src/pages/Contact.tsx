@@ -30,14 +30,14 @@ const Contact = () => {
 
           {/* Contact info */}
           <div className="flex flex-wrap justify-center gap-6 mb-14">
-            <a href="mailto:contact@margot-sophrologie.fr" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-              <Mail size={18} /> contact@margot-sophrologie.fr
+            <a href="mailto:pauses-sophro-margot@outlook.fr" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <Mail size={18} /> pauses-sophro-margot@outlook.fr
             </a>
             <div className="flex gap-4">
               <a href="https://www.instagram.com/les_pauses_sophro_de_margot/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
                 <Instagram size={20} />
               </a>
-              <a href="https://www.facebook.com/profile.php?id=100089760737215&locale=fr_FR" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=100089760737215" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
               </a>
             </div>
