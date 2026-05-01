@@ -24,12 +24,6 @@ const benefits = [
 ];
 
 const Index = () => {
-  useEffect(() => {
-    if (typeof window !== "undefined" && typeof window.ml === "function") {
-      window.ml("webforms", "show", "d5edhS");
-    }
-  }, []);
-
   return (
     <Layout>
       {/* Hero */}
