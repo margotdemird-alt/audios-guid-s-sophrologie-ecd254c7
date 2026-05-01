@@ -141,27 +141,7 @@ const Index = () => {
           <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
             Entre ton adresse email et reçois gratuitement un audio de sophrologie pour commencer à te sentir mieux.
           </p>
-          {submitted ? (
-            <div className="bg-warm-white rounded-xl p-6 shadow-soft">
-              <p className="text-foreground font-medium">
-                Merci ! Tu vas recevoir ton audio très bientôt.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-              <Input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Ton adresse email"
-                className="flex-1 h-12 bg-warm-white border-border"
-              />
-              <Button type="submit" variant="hero" className="h-12">
-                Je reçois mon audio gratuit
-              </Button>
-            </form>
-          )}
+          <div className="ml-embedded max-w-lg mx-auto" data-form="d5edhS"></div>
         </div>
       </section>
 
