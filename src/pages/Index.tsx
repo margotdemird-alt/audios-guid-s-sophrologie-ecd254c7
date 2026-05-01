@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ShieldCheck, Brain as BrainIcon, Bed, Leaf, HeartPulse } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ShieldCheck, Brain as BrainIcon, Bed, Leaf, HeartPulse, Gift } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroBg from "@/assets/hero-bg.jpg";
 import margotImg from "@/assets/margot-portrait.jpg";
