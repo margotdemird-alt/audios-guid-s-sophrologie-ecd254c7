@@ -129,6 +129,42 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Audio offert - capture email */}
+      <section className="py-20 md:py-28 bg-sand-light">
+        <div className="container max-w-2xl text-center fade-in-up">
+          <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+            <Gift className="text-primary" size={26} />
+          </div>
+          <h2 className="text-2xl md:text-4xl font-semibold mb-4 text-foreground">
+            Reçois un audio guidé offert
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed">
+            Entre ton adresse email et reçois gratuitement un audio de sophrologie pour commencer à te sentir mieux.
+          </p>
+          {submitted ? (
+            <div className="bg-warm-white rounded-xl p-6 shadow-soft">
+              <p className="text-foreground font-medium">
+                Merci ! Tu vas recevoir ton audio très bientôt.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+              <Input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Ton adresse email"
+                className="flex-1 h-12 bg-warm-white border-border"
+              />
+              <Button type="submit" variant="hero" className="h-12">
+                Je reçois mon audio gratuit
+              </Button>
+            </form>
+          )}
+        </div>
+      </section>
+
       {/* Les cycles d'audios */}
       <section className="py-20 md:py-28 bg-warm-white">
         <div className="container">
