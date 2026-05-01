@@ -1,11 +1,4 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-
-declare global {
-  interface Window {
-    ml?: (...args: unknown[]) => void;
-  }
-}
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ShieldCheck, Brain as BrainIcon, Bed, Leaf, HeartPulse, Gift } from "lucide-react";
