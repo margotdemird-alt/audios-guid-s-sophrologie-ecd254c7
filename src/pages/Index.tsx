@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    ml?: (...args: unknown[]) => void;
+  }
+}
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ShieldCheck, Brain as BrainIcon, Bed, Leaf, HeartPulse, Gift } from "lucide-react";
@@ -25,15 +31,11 @@ const benefits = [
 ];
 
 const Index = () => {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-    setEmail("");
-  };
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.ml === "function") {
+      window.ml("webforms", "show", "d5edhS");
+    }
+  }, []);
 
   return (
     <Layout>
