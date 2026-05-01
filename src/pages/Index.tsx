@@ -31,15 +31,11 @@ const benefits = [
 ];
 
 const Index = () => {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubmitted(true);
-    setEmail("");
-  };
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.ml === "function") {
+      window.ml("webforms", "show", "d5edhS");
+    }
+  }, []);
 
   return (
     <Layout>
