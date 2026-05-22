@@ -118,3 +118,61 @@
   from { opacity: 0; transform: translateX(-20px); }
   to { opacity: 1; transform: translateX(0); }
 }
+
+/* MailerLite form theming - match site palette */
+.ml-embedded,
+.ml-form-embedContainer,
+.ml-form-embedWrapper,
+.ml-form-embedBody,
+.ml-form-align-center,
+.ml-form-embedContent {
+  background-color: hsl(var(--sand-light)) !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.ml-embedded .ml-form-embedWrapper {
+  border-radius: var(--radius) !important;
+}
+
+.ml-embedded input[type="email"],
+.ml-embedded input[type="text"],
+.ml-embedded .form-control {
+  background-color: hsl(var(--warm-white)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-radius: calc(var(--radius) - 2px) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
+
+.ml-embedded input::placeholder {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.ml-embedded button,
+.ml-embedded .primary,
+.ml-embedded button[type="submit"] {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border: none !important;
+  border-radius: calc(var(--radius) - 2px) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.ml-embedded button:hover,
+.ml-embedded .primary:hover,
+.ml-embedded button[type="submit"]:hover {
+  background-color: hsl(var(--gold)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+}
+
+.ml-embedded label,
+.ml-embedded p,
+.ml-embedded h4,
+.ml-embedded .ml-form-embedContent * {
+  color: hsl(var(--foreground)) !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+}
