@@ -21,14 +21,15 @@ const availableCycles = [
     icon: Moon,
     kofiUrl: "https://ko-fi.com/s/448e43182a",
   },
-];
-
-const upcomingCycles = [
   {
     title: "Cycle Régulation du stress",
     subtitle: "Apaiser les tensions du quotidien",
     icon: Brain,
+    kofiUrl: "https://ko-fi.com/s/248ec202e1",
   },
+];
+
+const upcomingCycles = [
   {
     title: "Cycle Douleurs corporelles",
     subtitle: "Relâcher les tensions installées",
