@@ -11,7 +11,7 @@ const cycles = [
   { title: "Cycle Motivation", description: "Retrouver l'élan à son rythme.", icon: Heart, available: true, kofiUrl: "https://ko-fi.com/s/f7529011f4" },
   { title: "Cycle Énergie", description: "Sortir de la fatigue persistante.", icon: Sparkles, available: true, kofiUrl: "https://ko-fi.com/s/20030c5d41" },
   { title: "Cycle Sommeil", description: "Retrouver le chemin du sommeil.", icon: Moon, available: true, kofiUrl: "https://ko-fi.com/s/448e43182a" },
-  { title: "Cycle Régulation du stress", description: "Apaiser les tensions du quotidien.", icon: Brain, available: false },
+  { title: "Cycle Régulation du stress", description: "Apaiser les tensions du quotidien.", icon: Brain, available: true, kofiUrl: "https://ko-fi.com/s/248ec202e1" },
   { title: "Cycle Douleurs corporelles", description: "Relâcher les tensions installées.", icon: Wind, available: false },
 ];
 
