@@ -1,88 +1,47 @@
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { Flame, Zap, Moon, Brain, Heart, ArrowRight, Clock } from "lucide-react";
-
-const availableCycles = [
-  {
-    title: "Cycle Motivation",
-    subtitle: "Retrouver l'élan à son rythme",
-    icon: Flame,
-    kofiUrl: "https://ko-fi.com/s/f7529011f4",
-  },
-  {
-    title: "Cycle Énergie",
-    subtitle: "Sortir de la fatigue persistante",
-    icon: Zap,
-    kofiUrl: "https://ko-fi.com/s/20030c5d41",
-  },
-  {
-    title: "Cycle Sommeil",
-    subtitle: "Retrouver le chemin du sommeil",
-    icon: Moon,
-    kofiUrl: "https://ko-fi.com/s/448e43182a",
-  },
-  {
-    title: "Cycle Régulation du stress",
-    subtitle: "Apaiser les tensions du quotidien",
-    icon: Brain,
-    kofiUrl: "https://ko-fi.com/s/248ec202e1",
-  },
-];
-
-const upcomingCycles = [
-  {
-    title: "Cycle Douleurs corporelles",
-    subtitle: "Relâcher les tensions installées",
-    icon: Heart,
-  },
-];
+import CycleCard from "@/components/CycleCard";
+import { availableCycles, upcomingCycles } from "@/data/cycles";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 
 const Audios = () => {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-sand-light">
-        <div className="container max-w-4xl">
-          <div className="text-center mb-16 fade-in-up">
-            <h1 className="text-3xl md:text-5xl font-semibold mb-6 text-foreground">Les cycles d'audios guidés</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-4">
-              Chaque cycle propose une série d'audios courts pour vous accompagner vers plus de calme et de bien-être.
-            </p>
-            <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed italic">
-              Vous serez redirigé vers Ko-fi, une plateforme sécurisée de confiance, pour accéder et télécharger vos audios en toute simplicité.
-            </p>
+      <section className="pt-12 pb-10 md:pt-20 md:pb-14">
+        <div className="container max-w-3xl fade-in-up">
+          <p className="eyebrow mb-4">Les audios</p>
+          <h1 className="text-4xl sm:text-6xl text-foreground mb-6">Les cycles d'audios guidés</h1>
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+            Chaque cycle vous accompagne pendant 4 semaines avec 4 audios courts, pour avancer à votre rythme vers plus de calme et de bien-être.
+          </p>
+        </div>
+      </section>
+
+      <section className="pb-16">
+        <div className="container">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {availableCycles.map((c) => <CycleCard key={c.slug} cycle={c} />)}
           </div>
 
-          {/* Available cycles */}
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 sm:mb-8 text-foreground">Cycles disponibles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-16">
-            {availableCycles.map((cycle) => (
-              <div key={cycle.title} className="bg-warm-white rounded-2xl p-6 sm:p-10 shadow-card hover:shadow-lg transition-all duration-300 flex flex-col border border-border/50">
-                <cycle.icon className="text-primary mb-4 sm:mb-5" size={32} />
-                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-3 text-foreground">{cycle.title}</h3>
-                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">{cycle.subtitle}</p>
-                <Button variant="outline" size="lg" asChild className="self-start mt-auto hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors">
-                  <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">
-                    Accéder au cycle <ArrowRight size={18} />
-                  </a>
-                </Button>
-              </div>
-            ))}
+          <div className="mt-8 flex items-start gap-3 rounded-2xl bg-secondary p-5 text-sm text-muted-foreground max-w-3xl">
+            <ShieldCheck className="text-primary shrink-0" size={20} />
+            <p>Vous serez redirigé vers Ko-fi, une plateforme sécurisée de confiance, pour accéder et télécharger vos audios en toute simplicité.</p>
           </div>
+        </div>
+      </section>
 
-          {/* Upcoming cycles */}
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 sm:mb-8 text-foreground">Bientôt disponibles</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            {upcomingCycles.map((cycle) => (
-              <div key={cycle.title} className="bg-card rounded-2xl p-6 sm:p-10 shadow-soft opacity-75 flex flex-col">
-                <cycle.icon className="text-muted-foreground mb-4 sm:mb-5" size={32} />
-                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-semibold mb-2 sm:mb-3 text-foreground">{cycle.title}</h3>
-                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">{cycle.subtitle}</p>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mt-auto">
-                  <Clock size={16} />
-                  <span>À venir</span>
-                </div>
+      <section className="pb-20 md:pb-28">
+        <div className="container">
+          <h2 className="text-3xl sm:text-4xl text-foreground mb-8">Bientôt disponible</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {upcomingCycles.map((c) => <CycleCard key={c.slug} cycle={c} />)}
+            <Link to="/quel-cycle-pour-moi" className="rounded-3xl bg-olive-dark text-primary-foreground p-7 sm:p-8 flex flex-col justify-between gap-6 hover:opacity-95 transition-opacity">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-terracotta-light mb-3">Vous hésitez ?</p>
+                <h3 className="text-2xl sm:text-3xl">Quel cycle est fait pour moi ?</h3>
               </div>
-            ))}
+              <span className="inline-flex items-center gap-2 font-medium">Faire le questionnaire <ArrowRight size={18} /></span>
+            </Link>
           </div>
         </div>
       </section>

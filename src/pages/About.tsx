@@ -19,12 +19,12 @@ const About = () => {
               <img
                 src={margotImg}
                 alt="Margot, sophrologue et psychologue"
-                className="w-64 h-72 md:w-full md:h-auto object-cover rounded-2xl shadow-card"
+                className="w-64 h-72 md:w-full md:h-auto object-cover rounded-[2rem] shadow-card"
               />
             </div>
             <div className="md:col-span-3">
-              <h1 className="text-3xl md:text-4xl font-semibold mb-2 text-foreground">À propos de Margot</h1>
-              <p className="text-primary font-medium mb-8">Sophrologue et psychologue</p>
+              <h1 className="text-4xl md:text-6xl mb-2 text-foreground">À propos de Margot</h1>
+              <p className="text-primary font-medium mb-8">Sophrologue certifiée, psychologue de formation</p>
 
               <div className="space-y-4 text-muted-foreground leading-relaxed mb-10">
                 <p>
@@ -41,7 +41,7 @@ const About = () => {
               <h2 className="font-serif text-xl font-semibold mb-4 text-foreground">Domaines d'expertise</h2>
               <div className="flex flex-wrap gap-3">
                 {expertise.map((item) => (
-                  <span key={item} className="bg-card text-foreground text-sm px-4 py-2 rounded-xl shadow-soft">
+                  <span key={item} className="bg-sage-light text-foreground text-sm px-4 py-2 rounded-full">
                     {item}
                   </span>
                 ))}
