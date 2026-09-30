@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,42 +6,52 @@
 
 @layer base {
   :root {
-    --background: 36 33% 96%;
-    --foreground: 30 10% 25%;
+    /* Crème / ivoire */
+    --background: 42 38% 96%;
+    --foreground: 24 18% 17%;
 
-    --card: 40 30% 95%;
-    --card-foreground: 30 10% 25%;
+    --card: 42 45% 99%;
+    --card-foreground: 24 18% 17%;
+    --popover: 42 45% 99%;
+    --popover-foreground: 24 18% 17%;
 
-    --popover: 40 30% 95%;
-    --popover-foreground: 30 10% 25%;
+    /* Vert sauge / olive doux */
+    --primary: 86 15% 36%;
+    --primary-foreground: 42 38% 97%;
 
-    --primary: 36 25% 55%;
-    --primary-foreground: 40 40% 98%;
+    /* Beige chaud */
+    --secondary: 36 32% 89%;
+    --secondary-foreground: 24 18% 17%;
 
-    --secondary: 33 20% 78%;
-    --secondary-foreground: 30 10% 25%;
+    --muted: 38 28% 91%;
+    --muted-foreground: 25 10% 38%;
 
-    --muted: 36 20% 90%;
-    --muted-foreground: 30 8% 50%;
+    /* Terracotta */
+    --accent: 16 50% 50%;
+    --accent-foreground: 42 38% 97%;
 
-    --accent: 40 35% 73%;
-    --accent-foreground: 30 10% 20%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 42 38% 97%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --border: 35 22% 84%;
+    --input: 35 22% 80%;
+    --ring: 86 15% 36%;
 
-    --border: 33 18% 85%;
-    --input: 33 18% 85%;
-    --ring: 36 25% 55%;
+    --radius: 1rem;
 
-    --radius: 0.75rem;
+    --sage: 86 15% 36%;
+    --sage-light: 88 18% 88%;
+    --olive-dark: 90 16% 20%;
+    --terracotta: 16 50% 50%;
+    --terracotta-light: 18 55% 92%;
 
-    --sand: 33 28% 82%;
-    --sand-light: 36 30% 90%;
-    --taupe: 30 15% 70%;
-    --warm-white: 40 40% 96%;
-    --gold: 40 40% 73%;
-    --beige-light: 33 30% 88%;
+    /* Legacy aliases (mapped to new palette) */
+    --sand: 36 30% 87%;
+    --sand-light: 38 32% 92%;
+    --taupe: 30 12% 60%;
+    --warm-white: 42 38% 96%;
+    --gold: 16 50% 50%;
+    --beige-light: 36 30% 89%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -52,28 +62,6 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-
-  .dark {
-    --background: 30 10% 10%;
-    --foreground: 36 30% 90%;
-    --card: 30 10% 14%;
-    --card-foreground: 36 30% 90%;
-    --popover: 30 10% 14%;
-    --popover-foreground: 36 30% 90%;
-    --primary: 40 35% 73%;
-    --primary-foreground: 30 10% 10%;
-    --secondary: 30 12% 20%;
-    --secondary-foreground: 36 30% 90%;
-    --muted: 30 10% 18%;
-    --muted-foreground: 33 15% 60%;
-    --accent: 40 30% 30%;
-    --accent-foreground: 36 30% 90%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 30 10% 22%;
-    --input: 30 10% 22%;
-    --ring: 40 35% 73%;
-  }
 }
 
 @layer base {
@@ -81,40 +69,36 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-size: 17px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif;
+    @apply font-serif tracking-tight;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent;
+  }
+  .section {
+    @apply py-20 md:py-28;
   }
 }
 
 @layer utilities {
-  .fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-
-  .fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-
-  .slide-in-left {
-    animation: slideInLeft 0.8s ease-out forwards;
-  }
+  .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+  .fade-in-up { animation: fadeInUp 0.7s ease-out forwards; }
+  .slide-in-left { animation: slideInLeft 0.7s ease-out forwards; }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: translateX(0); } }

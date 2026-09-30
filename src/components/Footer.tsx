@@ -1,63 +1,57 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Mail } from "lucide-react";
+import { navLinks } from "./Navbar";
 
 const Footer = () => {
   return (
-    <footer className="bg-sand-light border-t border-border/50 pt-16 pb-8">
+    <footer className="bg-olive-dark text-primary-foreground pt-16 pb-8">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
-          <div>
-            <h3 className="text-xl font-semibold mb-3 text-foreground">
-              Les Pauses Sophro <span className="text-primary font-normal">de Margot</span>
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Des audios guidés pour retrouver calme, équilibre et bien-être au quotidien.
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          <div className="md:col-span-2">
+            <p className="font-serif text-2xl mb-3">
+              Les Pauses Sophro <em className="opacity-80">de Margot</em>
             </p>
+            <p className="text-primary-foreground/70 max-w-sm leading-relaxed">
+              Des audios guidés de sophrologie pour retrouver calme, équilibre et élan au quotidien.
+            </p>
+            <div className="flex gap-3 mt-6">
+              {[
+                { href: "https://www.instagram.com/les_pauses_sophro_de_margot/", icon: Instagram, label: "Instagram" },
+                { href: "https://www.facebook.com/profile.php?id=100089760737215", icon: Facebook, label: "Facebook" },
+                { href: "mailto:pauses-sophro-margot@outlook.fr", icon: Mail, label: "Email" },
+              ].map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                  className="w-11 h-11 rounded-full border border-primary-foreground/25 flex items-center justify-center hover:bg-primary-foreground/10 transition-colors">
+                  <s.icon size={18} />
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Navigation */}
           <div>
-            <h4 className="font-serif text-sm font-semibold mb-4 text-foreground uppercase tracking-wider">Navigation</h4>
-            <div className="flex flex-col gap-2.5">
-              {[
-                { to: "/", label: "Accueil" },
-                { to: "/audios", label: "Audios" },
-                { to: "/comment-pratiquer", label: "Comment pratiquer" },
-                { to: "/a-propos", label: "À propos" },
-                { to: "/contact", label: "Contact" },
-              ].map((link) => (
-                <Link key={link.to} to={link.to} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/60 mb-4">Navigation</p>
+            <div className="flex flex-col gap-3">
+              {[...navLinks, { to: "/quel-cycle-pour-moi", label: "Quel cycle pour moi ?" }].map((link) => (
+                <Link key={link.to} to={link.to} className="text-primary-foreground/85 hover:text-primary-foreground transition-colors">
                   {link.label}
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Legal & Social */}
           <div>
-            <h4 className="font-serif text-sm font-semibold mb-4 text-foreground uppercase tracking-wider">Informations</h4>
-            <div className="flex flex-col gap-2.5 mb-6">
-              <Link to="/mentions-legales" className="text-sm text-muted-foreground hover:text-primary transition-colors">Mentions légales</Link>
-              <Link to="/politique-de-confidentialite" className="text-sm text-muted-foreground hover:text-primary transition-colors">Politique de confidentialité</Link>
-              <Link to="/conditions-utilisation" className="text-sm text-muted-foreground hover:text-primary transition-colors">Conditions d'utilisation</Link>
-            </div>
-            <div className="flex gap-4">
-              <a href="https://www.instagram.com/les_pauses_sophro_de_margot/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=100089760737215" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="mailto:pauses-sophro-margot@outlook.fr" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
-                <Mail size={20} />
-              </a>
+            <p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/60 mb-4">Informations</p>
+            <div className="flex flex-col gap-3">
+              <Link to="/mentions-legales" className="text-primary-foreground/85 hover:text-primary-foreground">Mentions légales</Link>
+              <Link to="/politique-de-confidentialite" className="text-primary-foreground/85 hover:text-primary-foreground">Politique de confidentialité</Link>
+              <Link to="/conditions-utilisation" className="text-primary-foreground/85 hover:text-primary-foreground">Conditions d'utilisation</Link>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-border/50 pt-6 text-center">
-          <p className="text-xs text-muted-foreground">© 2026 Les Pauses Sophro de Margot. Tous droits réservés.</p>
+        <div className="border-t border-primary-foreground/15 pt-6 flex flex-col sm:flex-row gap-2 justify-between text-xs text-primary-foreground/60">
+          <p>© 2026 Les Pauses Sophro de Margot. Tous droits réservés.</p>
+          <p>Les audios ne remplacent pas un suivi médical.</p>
         </div>
       </div>
     </footer>
