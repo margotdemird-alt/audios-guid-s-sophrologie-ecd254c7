@@ -1,135 +1,133 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import Layout from "@/components/Layout";
+import FaqList from "@/components/FaqList";
 import { Button } from "@/components/ui/button";
-import { Play, Download, Clock, ArrowLeft } from "lucide-react";
+import { getCycle } from "@/data/cycles";
+import { ArrowLeft, ArrowRight, Clock, Headphones, CalendarDays, Play, ShieldCheck } from "lucide-react";
 
-const cyclesData: Record<string, { title: string; description: string; audios: { title: string; description: string; duration: string }[] }> = {
-  "gestion-du-stress": {
-    title: "Gestion du stress",
-    description: "Une série d'audios guidés pour relâcher la pression mentale et calmer le système nerveux. Ces exercices vous aideront à retrouver un état de calme intérieur.",
-    audios: [
-      { title: "Scan corporel de détente", description: "Un parcours guidé du corps pour identifier et relâcher les zones de tension.", duration: "8 min" },
-      { title: "Respirer pour relâcher le stress", description: "Un exercice de respiration simple pour apaiser le système nerveux.", duration: "5 min" },
-      { title: "Lâcher les tensions mentales", description: "Une visualisation pour relâcher la pression mentale accumulée.", duration: "7 min" },
-    ],
-  },
-  "equilibre-emotionnel": {
-    title: "Équilibre émotionnel",
-    description: "Des pratiques pour mieux comprendre et réguler ses émotions au quotidien.",
-    audios: [
-      { title: "Accueillir ses émotions", description: "Apprendre à observer ses émotions sans jugement.", duration: "6 min" },
-      { title: "Respiration apaisante", description: "Un exercice de respiration pour calmer les émotions fortes.", duration: "4 min" },
-      { title: "Visualisation d'équilibre", description: "Retrouver un sentiment de stabilité intérieure.", duration: "8 min" },
-    ],
-  },
-  "sommeil": {
-    title: "Sommeil",
-    description: "Préparer le corps et l'esprit à un sommeil plus réparateur grâce à des exercices doux et progressifs.",
-    audios: [
-      { title: "Détente progressive du soir", description: "Relâcher chaque partie du corps pour préparer le sommeil.", duration: "10 min" },
-      { title: "Respiration du soir", description: "Un rythme respiratoire apaisant pour favoriser l'endormissement.", duration: "5 min" },
-      { title: "Lâcher prise mental", description: "Libérer les pensées de la journée pour un sommeil serein.", duration: "7 min" },
-    ],
-  },
-  "detente-corporelle": {
-    title: "Détente corporelle",
-    description: "Relâcher les tensions physiques accumulées grâce à des exercices simples et guidés.",
-    audios: [
-      { title: "Scan corporel complet", description: "Un parcours détaillé de tout le corps pour relâcher les tensions.", duration: "10 min" },
-      { title: "Relâchement des épaules et du dos", description: "Cibler les zones de tension les plus fréquentes.", duration: "6 min" },
-      { title: "Détente profonde", description: "Un exercice de relaxation profonde pour tout le corps.", duration: "8 min" },
-    ],
-  },
-  "pause-mentale": {
-    title: "Pause mentale",
-    description: "Retrouver de la clarté et calmer l'agitation mentale en quelques minutes.",
-    audios: [
-      { title: "Pause respiration", description: "3 minutes pour se recentrer et calmer le mental.", duration: "3 min" },
-      { title: "Recentrage", description: "Revenir à l'instant présent et retrouver de la clarté.", duration: "5 min" },
-      { title: "Calme intérieur", description: "Une visualisation pour retrouver un espace de calme.", duration: "7 min" },
-    ],
-  },
-  "energie-et-recuperation": {
-    title: "Énergie et récupération",
-    description: "Des exercices pour retrouver clarté mentale et vitalité au quotidien.",
-    audios: [
-      { title: "Respiration dynamisante", description: "Retrouver de l'énergie en quelques minutes.", duration: "4 min" },
-      { title: "Activation corporelle", description: "Réveiller le corps avec douceur et intention.", duration: "6 min" },
-      { title: "Visualisation énergisante", description: "Recharger les batteries grâce à la visualisation.", duration: "7 min" },
-    ],
-  },
-};
+/**
+ * Modèle de page produit générique pour tous les cycles.
+ * Les contenus marqués "à venir" seront complétés cycle par cycle.
+ */
+const Placeholder = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-muted-foreground italic">{children}</p>
+);
 
 const CycleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const cycle = slug ? cyclesData[slug] : null;
+  const cycle = getCycle(slug);
+  if (!cycle) return <Navigate to="/audios" replace />;
 
-  if (!cycle) {
-    return (
-      <Layout>
-        <div className="py-24 text-center container">
-          <h1 className="text-2xl font-semibold mb-4 text-foreground">Cycle introuvable</h1>
-          <Button variant="outline" asChild>
-            <Link to="/audios"><ArrowLeft size={14} /> Retour aux audios</Link>
-          </Button>
-        </div>
-      </Layout>
+  const BuyButton = () =>
+    cycle.kofiUrl ? (
+      <Button variant="hero" asChild className="w-full sm:w-auto">
+        <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">Accéder au cycle <ArrowRight /></a>
+      </Button>
+    ) : (
+      <span className="inline-flex h-14 items-center px-8 rounded-full bg-secondary text-muted-foreground">Bientôt disponible</span>
     );
-  }
 
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-warm-white">
-        <div className="container max-w-3xl">
-          <Button variant="ghost" size="sm" asChild className="mb-8">
-            <Link to="/audios"><ArrowLeft size={14} /> Retour aux audios</Link>
-          </Button>
-
-          <div className="fade-in-up">
-            <h1 className="text-3xl md:text-4xl font-semibold mb-4 text-foreground">{cycle.title}</h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-12">{cycle.description}</p>
+      {/* En-tête */}
+      <section className="pt-8 pb-16 md:pt-14 md:pb-24 bg-secondary">
+        <div className="container max-w-4xl">
+          <Link to="/audios" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-10">
+            <ArrowLeft size={16} /> Tous les cycles
+          </Link>
+          <div className="w-14 h-14 rounded-full bg-card flex items-center justify-center mb-6">
+            <cycle.icon className="text-primary" size={24} strokeWidth={1.6} />
           </div>
-
-          <div className="space-y-4">
-            {cycle.audios.map((audio, index) => (
-              <div key={index} className="bg-card rounded-2xl p-6 md:p-8 shadow-soft hover:shadow-card transition-all duration-300">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="font-serif text-lg font-semibold text-foreground mb-1">
-                      Audio {index + 1} — {audio.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-2">{audio.description}</p>
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Clock size={12} />
-                      <span>{audio.duration}</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <Button variant="default" size="sm">
-                      <Play size={14} /> Écouter
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Download size={14} /> Télécharger
-                    </Button>
-                  </div>
-                </div>
-              </div>
+          <h1 className="text-4xl sm:text-6xl text-foreground mb-4">{cycle.title}</h1>
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-8">{cycle.benefit}</p>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {[{ i: CalendarDays, t: "4 semaines" }, { i: Headphones, t: "4 audios guidés" }, { i: Clock, t: "8 à 12 min" }].map(({ i: I, t }) => (
+              <span key={t} className="inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-card text-foreground"><I size={15} className="text-primary" />{t}</span>
             ))}
           </div>
-
-          {/* Ko-fi placeholder */}
-          <div className="mt-12 p-8 bg-sand-light rounded-2xl text-center">
-            <p className="text-muted-foreground text-sm mb-3">
-              Vous souhaitez soutenir ce projet ou accéder à des contenus exclusifs ?
-            </p>
-            <Button variant="warm" asChild>
-              <a href="https://ko-fi.com" target="_blank" rel="noopener noreferrer">
-                Soutenir sur Ko-fi
-              </a>
-            </Button>
-          </div>
+          <BuyButton />
         </div>
       </section>
+
+      <div className="container max-w-4xl py-16 md:py-24 space-y-16 md:space-y-24">
+        <section>
+          <p className="eyebrow mb-3">Ce que vous vivez</p>
+          <h2 className="text-3xl sm:text-4xl text-foreground mb-5">Le point de départ</h2>
+          <Placeholder>Description du problème vécu — à venir.</Placeholder>
+        </section>
+
+        <section className="grid md:grid-cols-2 gap-10">
+          <div>
+            <p className="eyebrow mb-3">Pour qui</p>
+            <h2 className="text-3xl text-foreground mb-5">À qui s'adresse ce cycle</h2>
+            <Placeholder>Profils concernés — à venir.</Placeholder>
+          </div>
+          <div>
+            <p className="eyebrow mb-3">Le parcours</p>
+            <h2 className="text-3xl text-foreground mb-5">Ce que propose le cycle</h2>
+            <Placeholder>Promesse du parcours — à venir.</Placeholder>
+          </div>
+        </section>
+
+        <section>
+          <p className="eyebrow mb-3">Le programme</p>
+          <h2 className="text-3xl sm:text-4xl text-foreground mb-8">Les 4 audios</h2>
+          <ol className="divide-y divide-border border-y border-border">
+            {[1, 2, 3, 4].map((n) => (
+              <li key={n} className="py-5 flex items-center gap-5">
+                <span className="font-serif text-3xl text-primary/50 w-10">0{n}</span>
+                <div className="flex-1">
+                  <p className="text-lg text-foreground">Semaine {n}</p>
+                  <p className="text-sm text-muted-foreground">Titre et description à venir</p>
+                </div>
+                <span className="text-sm text-muted-foreground inline-flex items-center gap-1"><Clock size={14} /> — min</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="rounded-3xl bg-card border border-border p-7 sm:p-10 flex flex-col sm:flex-row sm:items-center gap-6">
+          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+            <Play className="text-primary ml-1" size={24} />
+          </div>
+          <div>
+            <p className="eyebrow mb-2">Extrait gratuit</p>
+            <h2 className="text-2xl text-foreground mb-1">Écouter un extrait</h2>
+            <Placeholder>L'extrait audio sera disponible prochainement.</Placeholder>
+          </div>
+        </section>
+
+        <section>
+          <p className="eyebrow mb-3">Mode d'emploi</p>
+          <h2 className="text-3xl sm:text-4xl text-foreground mb-5">Comment utiliser le cycle</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Écoutez un audio par semaine, idéalement plusieurs fois, dans un endroit calme. Installez-vous assis ou allongé, avec des écouteurs si possible, et laissez-vous guider.
+          </p>
+        </section>
+
+        <section>
+          <p className="eyebrow mb-3">Questions</p>
+          <h2 className="text-3xl sm:text-4xl text-foreground mb-8">FAQ</h2>
+          <FaqList items={[
+            { q: "Comment vais-je recevoir les audios ?", a: "Vous êtes redirigé vers Ko-fi, une plateforme sécurisée, pour accéder et télécharger vos audios." },
+            { q: "Ce cycle remplace-t-il un suivi médical ?", a: "Non. Les audios sont des outils de bien-être, sans visée thérapeutique." },
+          ]} />
+        </section>
+
+        <section className="rounded-[2rem] bg-olive-dark text-primary-foreground p-8 sm:p-12 text-center">
+          <h2 className="text-3xl sm:text-4xl mb-3">{cycle.title}</h2>
+          <p className="text-primary-foreground/75 mb-2">4 semaines · 4 audios guidés</p>
+          <p className="text-primary-foreground/60 text-sm mb-8">Prix : à venir</p>
+          {cycle.kofiUrl ? (
+            <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full bg-accent text-accent-foreground font-medium hover:bg-accent/90 w-full sm:w-auto">
+              Accéder au cycle <ArrowRight size={18} />
+            </a>
+          ) : <p>Bientôt disponible</p>}
+          <p className="flex items-center justify-center gap-2 text-xs text-primary-foreground/60 mt-6">
+            <ShieldCheck size={14} /> Paiement et téléchargement via Ko-fi, plateforme sécurisée
+          </p>
+        </section>
+      </div>
     </Layout>
   );
 };

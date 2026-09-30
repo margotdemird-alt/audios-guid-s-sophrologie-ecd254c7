@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Figtree', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,6 +57,9 @@ export default {
         "warm-white": "hsl(var(--warm-white))",
         gold: "hsl(var(--gold))",
         "beige-light": "hsl(var(--beige-light))",
+        sage: { DEFAULT: "hsl(var(--sage))", light: "hsl(var(--sage-light))" },
+        "olive-dark": "hsl(var(--olive-dark))",
+        terracotta: { DEFAULT: "hsl(var(--terracotta))", light: "hsl(var(--terracotta-light))" },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -74,8 +77,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        soft: "0 2px 15px -3px hsl(var(--primary) / 0.08), 0 4px 6px -4px hsl(var(--primary) / 0.05)",
-        card: "0 4px 20px -5px hsl(var(--primary) / 0.1)",
+        soft: "0 1px 2px hsl(var(--foreground) / 0.04), 0 8px 24px -12px hsl(var(--foreground) / 0.12)",
+        card: "0 2px 4px hsl(var(--foreground) / 0.04), 0 18px 40px -20px hsl(var(--foreground) / 0.22)",
       },
       keyframes: {
         "accordion-down": {
