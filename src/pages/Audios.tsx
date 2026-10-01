@@ -25,7 +25,7 @@ const Audios = () => {
 
           <div className="mt-8 flex items-start gap-3 rounded-2xl bg-secondary p-5 text-sm text-muted-foreground max-w-3xl">
             <ShieldCheck className="text-primary shrink-0" size={20} />
-            <p>Vous serez redirigé vers Ko-fi, une plateforme sécurisée de confiance, pour accéder et télécharger vos audios en toute simplicité.</p>
+            <p>Paiement sécurisé. Les modalités d'accès à vos audios vous sont indiquées immédiatement après l'achat.</p>
           </div>
         </div>
       </section>

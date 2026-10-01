@@ -3,33 +3,50 @@ import Layout from "@/components/Layout";
 import FaqList from "@/components/FaqList";
 import { Button } from "@/components/ui/button";
 import { getCycle } from "@/data/cycles";
-import { ArrowLeft, ArrowRight, Clock, Headphones, CalendarDays, Play, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Headphones, CalendarDays, Play, ShieldCheck, Tag } from "lucide-react";
 
 /**
  * Modèle de page produit générique pour tous les cycles.
- * Les contenus marqués "à venir" seront complétés cycle par cycle.
+ * Les contenus viennent de `cycle.details` ; sans détails, des marqueurs "à venir" s'affichent.
  */
 const Placeholder = ({ children }: { children: React.ReactNode }) => (
   <p className="text-muted-foreground italic">{children}</p>
 );
 
+const faq = [
+  { q: "Faut-il avoir déjà pratiqué la sophrologie ?", a: "Non. Les audios sont conçus pour être accessibles même si vous n'avez jamais pratiqué la sophrologie." },
+  { q: "Combien de temps dure un audio ?", a: "Les pratiques durent environ 8 à 12 minutes afin de pouvoir s'intégrer facilement dans le quotidien." },
+  { q: "Puis-je réécouter les audios ?", a: "Oui. Vous pouvez reprendre chaque audio autant de fois que vous le souhaitez et avancer à votre rythme." },
+  { q: "Comment vais-je recevoir les audios ?", a: "Après votre achat, les modalités d'accès à vos audios vous seront indiquées immédiatement." },
+  { q: "Ce cycle remplace-t-il un suivi médical ou psychologique ?", a: "Non. Ces audios de sophrologie sont des outils de bien-être et ne remplacent pas un diagnostic, un traitement ou un accompagnement médical ou psychologique lorsqu'il est nécessaire." },
+];
+
 const CycleDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const cycle = getCycle(slug);
   if (!cycle) return <Navigate to="/audios" replace />;
+  const d = cycle.details;
+  const priceLabel = cycle.price ? `${cycle.price} €` : null;
+  const ctaLabel = priceLabel ? `Commencer le cycle – ${priceLabel}` : "Commencer le cycle";
 
   const BuyButton = () =>
     cycle.kofiUrl ? (
       <Button variant="hero" asChild className="w-full sm:w-auto">
-        <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">Accéder au cycle <ArrowRight /></a>
+        <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer">{ctaLabel} <ArrowRight /></a>
       </Button>
     ) : (
       <span className="inline-flex h-14 items-center px-8 rounded-full bg-secondary text-muted-foreground">Bientôt disponible</span>
     );
 
+  const chips = [
+    { i: CalendarDays, t: "4 semaines" },
+    { i: Headphones, t: "4 audios guidés" },
+    { i: Clock, t: "8 à 12 min" },
+    ...(priceLabel ? [{ i: Tag, t: priceLabel }] : []),
+  ];
+
   return (
     <Layout>
-      {/* En-tête */}
       <section className="pt-8 pb-16 md:pt-14 md:pb-24 bg-secondary">
         <div className="container max-w-4xl">
           <Link to="/audios" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-10">
@@ -39,9 +56,9 @@ const CycleDetail = () => {
             <cycle.icon className="text-primary" size={24} strokeWidth={1.6} />
           </div>
           <h1 className="text-4xl sm:text-6xl text-foreground mb-4">{cycle.title}</h1>
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-8">{cycle.benefit}</p>
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-8">{d?.subtitle ?? cycle.benefit}</p>
           <div className="flex flex-wrap gap-2 mb-10">
-            {[{ i: CalendarDays, t: "4 semaines" }, { i: Headphones, t: "4 audios guidés" }, { i: Clock, t: "8 à 12 min" }].map(({ i: I, t }) => (
+            {chips.map(({ i: I, t }) => (
               <span key={t} className="inline-flex items-center gap-2 text-sm px-4 py-2 rounded-full bg-card text-foreground"><I size={15} className="text-primary" />{t}</span>
             ))}
           </div>
@@ -53,19 +70,34 @@ const CycleDetail = () => {
         <section>
           <p className="eyebrow mb-3">Ce que vous vivez</p>
           <h2 className="text-3xl sm:text-4xl text-foreground mb-5">Le point de départ</h2>
-          <Placeholder>Description du problème vécu — à venir.</Placeholder>
+          {d ? (
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
+              {d.startingPoint.map((p) => <p key={p}>{p}</p>)}
+            </div>
+          ) : <Placeholder>Description du problème vécu — à venir.</Placeholder>}
         </section>
 
         <section className="grid md:grid-cols-2 gap-10">
           <div>
             <p className="eyebrow mb-3">Pour qui</p>
             <h2 className="text-3xl text-foreground mb-5">À qui s'adresse ce cycle</h2>
-            <Placeholder>Profils concernés — à venir.</Placeholder>
+            {d ? (
+              <>
+                <p className="text-muted-foreground mb-4">{d.forWhoIntro}</p>
+                <ul className="space-y-3">
+                  {d.forWho.map((f) => (
+                    <li key={f} className="flex gap-3 text-foreground leading-relaxed">
+                      <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />{f}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : <Placeholder>Profils concernés — à venir.</Placeholder>}
           </div>
           <div>
             <p className="eyebrow mb-3">Le parcours</p>
             <h2 className="text-3xl text-foreground mb-5">Ce que propose le cycle</h2>
-            <Placeholder>Promesse du parcours — à venir.</Placeholder>
+            {d ? <p className="text-muted-foreground leading-relaxed">{d.promise}</p> : <Placeholder>Promesse du parcours — à venir.</Placeholder>}
           </div>
         </section>
 
@@ -73,14 +105,15 @@ const CycleDetail = () => {
           <p className="eyebrow mb-3">Le programme</p>
           <h2 className="text-3xl sm:text-4xl text-foreground mb-8">Les 4 audios</h2>
           <ol className="divide-y divide-border border-y border-border">
-            {[1, 2, 3, 4].map((n) => (
-              <li key={n} className="py-5 flex items-center gap-5">
-                <span className="font-serif text-3xl text-primary/50 w-10">0{n}</span>
+            {[0, 1, 2, 3].map((i) => (
+              <li key={i} className="py-5 flex items-start sm:items-center gap-5">
+                <span className="font-serif text-3xl text-primary/50 w-10 shrink-0">0{i + 1}</span>
                 <div className="flex-1">
-                  <p className="text-lg text-foreground">Semaine {n}</p>
-                  <p className="text-sm text-muted-foreground">Titre et description à venir</p>
+                  <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground mb-1">Semaine {i + 1}</p>
+                  <p className="text-lg text-foreground">{d?.audios[i]?.title ?? `Semaine ${i + 1}`}</p>
+                  <p className="text-sm text-muted-foreground">{d?.audios[i]?.desc ?? "Titre et description à venir"}</p>
                 </div>
-                <span className="text-sm text-muted-foreground inline-flex items-center gap-1"><Clock size={14} /> — min</span>
+                <span className="text-sm text-muted-foreground inline-flex items-center gap-1 shrink-0"><Clock size={14} /> {d ? "8 à 12 min" : "— min"}</span>
               </li>
             ))}
           </ol>
@@ -100,31 +133,28 @@ const CycleDetail = () => {
         <section>
           <p className="eyebrow mb-3">Mode d'emploi</p>
           <h2 className="text-3xl sm:text-4xl text-foreground mb-5">Comment utiliser le cycle</h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Écoutez un audio par semaine, idéalement plusieurs fois, dans un endroit calme. Installez-vous assis ou allongé, avec des écouteurs si possible, et laissez-vous guider.
-          </p>
+          <div className="space-y-4 text-muted-foreground leading-relaxed">
+            {(d?.howTo ?? ["Écoutez un audio par semaine, idéalement plusieurs fois, dans un endroit calme. Installez-vous assis ou allongé, avec des écouteurs si possible, et laissez-vous guider."]).map((p) => <p key={p}>{p}</p>)}
+          </div>
         </section>
 
         <section>
           <p className="eyebrow mb-3">Questions</p>
           <h2 className="text-3xl sm:text-4xl text-foreground mb-8">FAQ</h2>
-          <FaqList items={[
-            { q: "Comment vais-je recevoir les audios ?", a: "Vous êtes redirigé vers Ko-fi, une plateforme sécurisée, pour accéder et télécharger vos audios." },
-            { q: "Ce cycle remplace-t-il un suivi médical ?", a: "Non. Les audios sont des outils de bien-être, sans visée thérapeutique." },
-          ]} />
+          <FaqList items={faq} />
         </section>
 
         <section className="rounded-[2rem] bg-olive-dark text-primary-foreground p-8 sm:p-12 text-center">
           <h2 className="text-3xl sm:text-4xl mb-3">{cycle.title}</h2>
-          <p className="text-primary-foreground/75 mb-2">4 semaines · 4 audios guidés</p>
-          <p className="text-primary-foreground/60 text-sm mb-8">Prix : à venir</p>
+          <p className="text-primary-foreground/75 mb-2">4 semaines · 4 audios guidés · 8 à 12 min</p>
+          {priceLabel && <p className="font-serif text-4xl mb-8">{priceLabel}</p>}
           {cycle.kofiUrl ? (
             <a href={cycle.kofiUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-full bg-accent text-accent-foreground font-medium hover:bg-accent/90 w-full sm:w-auto">
-              Accéder au cycle <ArrowRight size={18} />
+              {ctaLabel} <ArrowRight size={18} />
             </a>
           ) : <p>Bientôt disponible</p>}
           <p className="flex items-center justify-center gap-2 text-xs text-primary-foreground/60 mt-6">
-            <ShieldCheck size={14} /> Paiement et téléchargement via Ko-fi, plateforme sécurisée
+            <ShieldCheck size={14} /> Paiement sécurisé
           </p>
         </section>
       </div>

@@ -33,7 +33,7 @@ const reasons = [
 const faq = [
   { q: "Faut-il avoir déjà pratiqué la sophrologie ?", a: "Non. Les audios sont conçus pour être suivis sans expérience préalable : il suffit de se laisser guider par la voix." },
   { q: "Combien de temps dure un audio ?", a: "Les séances durent entre 8 et 12 minutes, pour s'intégrer facilement à votre quotidien." },
-  { q: "Comment se déroule l'achat ?", a: "Vous êtes redirigé vers Ko-fi, une plateforme sécurisée, pour accéder et télécharger vos audios en toute simplicité." },
+  { q: "Comment se déroule l'achat ?", a: "Le paiement est sécurisé et les modalités d'accès à vos audios vous sont indiquées immédiatement après l'achat." },
   { q: "Les audios remplacent-ils un accompagnement médical ?", a: "Non. Les audios sont des outils de bien-être et de détente, sans visée thérapeutique. Ils ne remplacent pas un avis ou un suivi médical." },
 ];
 
@@ -138,7 +138,7 @@ const Index = () => {
           <Gift className="text-accent mx-auto mb-5" size={28} strokeWidth={1.5} />
           <h2 className="text-3xl sm:text-5xl mb-4 text-foreground">Reçois un audio guidé offert</h2>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Entre ton adresse email et reçois gratuitement un audio de sophrologie pour commencer à te sentir mieux.
+            Reçois gratuitement une pause guidée pour relâcher les tensions et découvrir ma façon de t'accompagner.
           </p>
           <div className="ml-embedded max-w-lg mx-auto" data-form="d5edhS"></div>
         </div>
