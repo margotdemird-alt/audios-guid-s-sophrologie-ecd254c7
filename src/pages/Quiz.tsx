@@ -144,7 +144,7 @@ const Quiz = () => {
       <section className="py-16 md:py-24 bg-sand-light min-h-[80vh]">
         <div className="container max-w-3xl">
           <div className="text-center mb-10 fade-in-up">
-            <h1 className="font-serif text-3xl md:text-5xl font-semibold mb-4 text-foreground">
+            <h1 className="font-serif text-3xl md:text-5xl font-normal mb-4 text-foreground">
               Quel cycle est fait pour moi ?
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -153,7 +153,7 @@ const Quiz = () => {
           </div>
 
           {!done ? (
-            <div className="bg-warm-white rounded-2xl p-6 sm:p-10 shadow-card border border-border/50 fade-in-up">
+            <div className="bg-card rounded-3xl p-6 sm:p-10 border border-border fade-in-up">
               {/* Progress */}
               <div className="mb-8">
                 <div className="flex justify-between text-xs text-muted-foreground mb-2">
@@ -167,7 +167,7 @@ const Quiz = () => {
                 </div>
               </div>
 
-              <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-semibold mb-6 text-foreground">
+              <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-normal mb-6 text-foreground">
                 {questions[step].text}
               </h2>
 
@@ -197,7 +197,7 @@ const Quiz = () => {
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
                   <Sparkles className="text-primary" size={26} />
                 </div>
-                <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-3 text-foreground">
+                <h2 className="font-serif text-2xl md:text-3xl font-normal mb-3 text-foreground">
                   Voici les pratiques qui pourraient vous accompagner
                 </h2>
                 <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
@@ -212,10 +212,10 @@ const Quiz = () => {
                   return (
                     <div
                       key={key}
-                      className="bg-warm-white rounded-2xl p-6 sm:p-8 shadow-card border border-border/50 flex flex-col"
+                      className="bg-card rounded-3xl p-6 sm:p-8 border border-border flex flex-col"
                     >
                       <Icon className="text-primary mb-4" size={30} />
-                      <h3 className="font-serif text-xl sm:text-2xl font-semibold mb-2 text-foreground">
+                      <h3 className="font-serif text-xl sm:text-2xl font-normal mb-2 text-foreground">
                         {c.title}
                       </h3>
                       <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
