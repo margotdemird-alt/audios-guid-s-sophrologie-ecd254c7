@@ -12,7 +12,7 @@ const expertise = [
 const About = () => {
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-warm-white">
+      <section className="py-16 md:py-28">
         <div className="container max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-start fade-in-up">
             <div className="md:col-span-2 flex justify-center">

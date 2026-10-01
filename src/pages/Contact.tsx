@@ -19,10 +19,10 @@ const Contact = () => {
 
   return (
     <Layout>
-      <section className="py-16 md:py-24 bg-warm-white">
+      <section className="py-16 md:py-28">
         <div className="container max-w-2xl">
           <div className="text-center mb-14 fade-in-up">
-            <h1 className="text-3xl md:text-5xl font-semibold mb-6 text-foreground">Contact</h1>
+            <h1 className="text-4xl md:text-6xl mb-6 text-foreground">Contact</h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Une question ? N'hésitez pas à me contacter.
             </p>
@@ -44,7 +44,7 @@ const Contact = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 md:p-10 shadow-soft space-y-6">
+          <form onSubmit={handleSubmit} className="bg-card border border-border rounded-3xl p-6 md:p-10 space-y-6">
             <div>
               <Label htmlFor="name" className="text-foreground">Nom</Label>
               <Input
@@ -53,7 +53,7 @@ const Contact = () => {
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="Votre nom"
                 required
-                className="mt-2 bg-warm-white"
+                className="mt-2 h-12 bg-background"
               />
             </div>
             <div>
@@ -65,7 +65,7 @@ const Contact = () => {
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 placeholder="votre@email.fr"
                 required
-                className="mt-2 bg-warm-white"
+                className="mt-2 h-12 bg-background"
               />
             </div>
             <div>
@@ -77,10 +77,10 @@ const Contact = () => {
                 placeholder="Votre message..."
                 rows={5}
                 required
-                className="mt-2 bg-warm-white resize-none"
+                className="mt-2 h-12 bg-background resize-none"
               />
             </div>
-            <Button type="submit" variant="default" size="lg" className="w-full">
+            <Button type="submit" variant="default" size="lg" className="w-full h-14 rounded-full">
               <Send size={16} /> Envoyer le message
             </Button>
           </form>
