@@ -110,10 +110,11 @@ const CycleDetail = () => {
                 <span className="font-serif text-3xl text-primary/50 w-10 shrink-0">0{i + 1}</span>
                 <div className="flex-1">
                   <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground mb-1">Semaine {i + 1}</p>
-                  <p className="text-lg text-foreground">{d?.audios[i]?.title ?? `Semaine ${i + 1}`}</p>
-                  <p className="text-sm text-muted-foreground">{d?.audios[i]?.desc ?? "Titre et description à venir"}</p>
+                  <p className="text-lg text-foreground">{cycle.audios?.[i]?.title ?? `Semaine ${i + 1}`}</p>
+                  <p className="text-sm text-muted-foreground">{cycle.audios?.[i]?.desc ?? "Titre et description à venir"}</p>
+                  {cycle.audios?.[i]?.takeaway && <p className="text-sm text-primary italic mt-2">« {cycle.audios[i].takeaway} »</p>}
                 </div>
-                <span className="text-sm text-muted-foreground inline-flex items-center gap-1 shrink-0"><Clock size={14} /> {d ? "8 à 12 min" : "— min"}</span>
+                <span className="text-sm text-muted-foreground inline-flex items-center gap-1 shrink-0"><Clock size={14} /> 8 à 12 min</span>
               </li>
             ))}
           </ol>
