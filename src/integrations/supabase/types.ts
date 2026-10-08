@@ -14,7 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      access_tokens: {
+        Row: {
+          created_at: string
+          id: string
+          purchase_id: string
+          token: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          purchase_id: string
+          token?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          purchase_id?: string
+          token?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "access_tokens_purchase_id_fkey"
+            columns: ["purchase_id"]
+            isOneToOne: false
+            referencedRelation: "purchases"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      purchases: {
+        Row: {
+          amount_total: number | null
+          created_at: string
+          cycle_slug: string
+          email: string
+          id: string
+          status: string
+          stripe_session_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          amount_total?: number | null
+          created_at?: string
+          cycle_slug: string
+          email: string
+          id?: string
+          status?: string
+          stripe_session_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          amount_total?: number | null
+          created_at?: string
+          cycle_slug?: string
+          email?: string
+          id?: string
+          status?: string
+          stripe_session_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

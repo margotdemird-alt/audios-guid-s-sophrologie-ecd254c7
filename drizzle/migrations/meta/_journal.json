@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791452375596,
+      "tag": "0000_create_purchases_and_access_tokens",
+      "breakpoints": true
+    }
+  ]
 }
