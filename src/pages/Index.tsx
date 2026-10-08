@@ -58,7 +58,7 @@ const Index = () => {
           </div>
           <div className="md:col-span-5">
             <div className="relative aspect-[4/5] max-h-[520px] w-full rounded-[2rem] overflow-hidden shadow-card">
-              <img src={heroBg} alt="Herbes de pampas et dunes de sable" className="w-full h-full object-cover" />
+              <img src={heroBg} alt="Femme au casque audio, détendue dans un fauteuil" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
