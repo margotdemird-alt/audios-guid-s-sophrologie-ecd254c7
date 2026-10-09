@@ -1,9 +1,12 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useState } from "react";
+import { useParams, Link, Navigate, useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
 import FaqList from "@/components/FaqList";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { getCycle } from "@/data/cycles";
-import { ArrowLeft, ArrowRight, Clock, Headphones, CalendarDays, Play, ShieldCheck, Tag } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { ArrowLeft, ArrowRight, Clock, Headphones, CalendarDays, Play, ShieldCheck, Tag, Loader2, FlaskConical } from "lucide-react";
 
 /**
  * Modèle de page produit générique pour tous les cycles.
