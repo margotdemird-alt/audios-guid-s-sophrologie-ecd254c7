@@ -1,9 +1,12 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useState } from "react";
+import { useParams, Link, Navigate, useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
 import FaqList from "@/components/FaqList";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { getCycle } from "@/data/cycles";
-import { ArrowLeft, ArrowRight, Clock, Headphones, CalendarDays, Play, ShieldCheck, Tag } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { ArrowLeft, ArrowRight, Clock, Headphones, CalendarDays, Play, ShieldCheck, Tag, Loader2, FlaskConical } from "lucide-react";
 
 /**
  * Modèle de page produit générique pour tous les cycles.
@@ -28,6 +31,54 @@ const CycleDetail = () => {
   const d = cycle.details;
   const priceLabel = cycle.price ? `${cycle.price} €` : null;
   const ctaLabel = priceLabel ? `Commencer le cycle – ${priceLabel}` : "Commencer le cycle";
+
+  // Mode test Stripe : visible uniquement avec ?test=1 dans l'URL.
+  // Ko-fi reste le parcours d'achat actif pour les visiteurs.
+  const [searchParams] = useSearchParams();
+  const testMode = searchParams.get("test") === "1";
+  const [testEmail, setTestEmail] = useState("");
+  const [testLoading, setTestLoading] = useState(false);
+  const [testError, setTestError] = useState<string | null>(null);
+
+  const startTestCheckout = async () => {
+    setTestError(null);
+    setTestLoading(true);
+    const { data, error } = await supabase.functions.invoke("create-checkout", {
+      body: { cycleSlug: cycle.slug, email: testEmail, origin: window.location.origin },
+    });
+    setTestLoading(false);
+    if (error || !data?.url) {
+      setTestError("Impossible de lancer le paiement test. Réessayez.");
+      return;
+    }
+    window.location.href = data.url;
+  };
+
+  const TestCheckout = () =>
+    testMode && cycle.available ? (
+      <div className="mt-6 rounded-2xl border-2 border-dashed border-accent bg-card p-5 sm:p-6">
+        <p className="flex items-center gap-2 text-sm font-medium text-foreground">
+          <FlaskConical size={16} className="text-accent" /> Paiement en ligne — mode test
+        </p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Nouveau système en cours de test. Aucun argent réel n'est débité.
+        </p>
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+          <Input
+            type="email"
+            placeholder="Votre adresse e-mail"
+            value={testEmail}
+            onChange={(e) => setTestEmail(e.target.value)}
+            className="sm:max-w-xs"
+          />
+          <Button variant="hero" onClick={startTestCheckout} disabled={testLoading || !testEmail}>
+            {testLoading ? <Loader2 className="animate-spin" /> : <ArrowRight />}
+            {ctaLabel}
+          </Button>
+        </div>
+        {testError && <p className="mt-2 text-sm text-destructive">{testError}</p>}
+      </div>
+    ) : null;
 
   const BuyButton = () =>
     cycle.kofiUrl ? (
@@ -63,6 +114,7 @@ const CycleDetail = () => {
             ))}
           </div>
           <BuyButton />
+          <TestCheckout />
         </div>
       </section>
 
@@ -157,6 +209,7 @@ const CycleDetail = () => {
           <p className="flex items-center justify-center gap-2 text-xs text-primary-foreground/60 mt-6">
             <ShieldCheck size={14} /> Paiement sécurisé
           </p>
+          <TestCheckout />
         </section>
       </div>
     </Layout>

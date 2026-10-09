@@ -14,6 +14,8 @@ import Contact from "./pages/Contact";
 import MentionsLegales from "./pages/MentionsLegales";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import ConditionsUtilisation from "./pages/ConditionsUtilisation";
+import Confirmation from "./pages/Confirmation";
+import Acces from "./pages/Acces";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +38,8 @@ const App = () => (
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
           <Route path="/conditions-utilisation" element={<ConditionsUtilisation />} />
+          <Route path="/confirmation" element={<Confirmation />} />
+          <Route path="/acces/:token" element={<Acces />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
