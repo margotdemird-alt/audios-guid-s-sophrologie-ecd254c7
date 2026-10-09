@@ -114,6 +114,7 @@ const CycleDetail = () => {
             ))}
           </div>
           <BuyButton />
+          <TestCheckout />
         </div>
       </section>
 
@@ -208,6 +209,7 @@ const CycleDetail = () => {
           <p className="flex items-center justify-center gap-2 text-xs text-primary-foreground/60 mt-6">
             <ShieldCheck size={14} /> Paiement sécurisé
           </p>
+          <TestCheckout />
         </section>
       </div>
     </Layout>
