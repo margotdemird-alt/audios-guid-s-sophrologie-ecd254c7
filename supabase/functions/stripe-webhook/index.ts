@@ -12,16 +12,33 @@ Deno.serve(async (req) => {
       apiVersion: '2024-06-20',
     })
     const webhookSecret = Deno.env.get('STRIPE_WEBHOOK_SECRET')
+    if (!webhookSecret) {
+      console.error('stripe-webhook: STRIPE_WEBHOOK_SECRET manquant')
+      return new Response(JSON.stringify({ error: 'Webhook not configured' }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
 
     const signature = req.headers.get('stripe-signature')
+    if (!signature) {
+      return new Response(JSON.stringify({ error: 'Missing stripe-signature header' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+
     const body = await req.text()
 
     let event: Stripe.Event
-    if (webhookSecret && signature) {
+    try {
       event = await stripe.webhooks.constructEventAsync(body, signature, webhookSecret)
-    } else {
-      // Mode test sans secret de webhook configuré : on parse directement
-      event = JSON.parse(body) as Stripe.Event
+    } catch (verifyError) {
+      console.error('stripe-webhook: signature invalide', verifyError)
+      return new Response(JSON.stringify({ error: 'Invalid signature' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
     }
 
     if (event.type === 'checkout.session.completed') {
@@ -66,7 +83,10 @@ Deno.serve(async (req) => {
           if (tokenError) throw tokenError
 
           // Envoi de l'e-mail de confirmation
-          const accessUrl = `https://audios.sophrologie-margot.com/acces/${tokenRow.token}`
+          // URL de base configurable : PUBLIC_SITE_URL (phase de test : aperçu),
+          // sinon le domaine de production.
+          const appUrl = Deno.env.get('PUBLIC_SITE_URL') ?? 'https://audios.sophrologie-margot.com'
+          const accessUrl = `${appUrl}/acces/${tokenRow.token}`
           await fetch(`${Deno.env.get('SUPABASE_URL')}/functions/v1/send-confirmation-email`, {
             method: 'POST',
             headers: {
