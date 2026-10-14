@@ -83,7 +83,10 @@ Deno.serve(async (req) => {
           if (tokenError) throw tokenError
 
           // Envoi de l'e-mail de confirmation
-          const accessUrl = `https://audios.sophrologie-margot.com/acces/${tokenRow.token}`
+          // URL de base configurable : PUBLIC_SITE_URL (phase de test : aperçu),
+          // sinon le domaine de production.
+          const appUrl = Deno.env.get('PUBLIC_SITE_URL') ?? 'https://audios.sophrologie-margot.com'
+          const accessUrl = `${appUrl}/acces/${tokenRow.token}`
           await fetch(`${Deno.env.get('SUPABASE_URL')}/functions/v1/send-confirmation-email`, {
             method: 'POST',
             headers: {
