@@ -16,6 +16,7 @@ import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import ConditionsUtilisation from "./pages/ConditionsUtilisation";
 import Confirmation from "./pages/Confirmation";
 import Acces from "./pages/Acces";
+import AudioGratuit from "./pages/AudioGratuit";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/conditions-utilisation" element={<ConditionsUtilisation />} />
           <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/acces/:token" element={<Acces />} />
+          <Route path="/audio-gratuit" element={<AudioGratuit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
