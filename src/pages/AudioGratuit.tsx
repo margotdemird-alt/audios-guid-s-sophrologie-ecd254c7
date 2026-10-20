@@ -23,7 +23,7 @@ const AudioGratuit = () => {
           <div className="container max-w-2xl text-center">
             <p className="eyebrow mb-4">Audio guidé offert</p>
             <h1 className="text-3xl sm:text-5xl text-foreground mb-5 leading-tight">
-              10 minutes pour relâcher les tensions et retrouver un peu de calme
+              10 minutes pour relâcher les tensions et retrouver le calme
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Une pause guidée de sophrologie à écouter quand le mental s'agite, que les tensions s'accumulent ou que vous ressentez simplement le besoin de souffler.
@@ -64,11 +64,18 @@ const AudioGratuit = () => {
 
         <section className="py-12 sm:py-16 bg-sand-light">
           <div className="container max-w-2xl text-center">
-            <p className="text-lg text-foreground leading-relaxed mb-8">
+            <p className="font-serif text-xl text-foreground mb-4">Margot Demirdjian · Sophrologue certifiée, psychologue de formation</p>
+            <p className="text-lg text-foreground leading-relaxed">
               Je suis Margot, sophrologue certifiée et psychologue de formation. Je crée Les Pauses Sophro de Margot pour proposer des pratiques simples et accessibles autour du stress, du sommeil, des tensions et de l'énergie.
             </p>
+          </div>
+        </section>
+
+        <section className="py-12 sm:py-16">
+          <div className="container max-w-2xl text-center">
+            <h2 className="text-2xl sm:text-4xl text-foreground mb-6">Envie de prendre cette pause maintenant ?</h2>
             <Button size="lg" className="w-full sm:w-auto rounded-full" onClick={scrollToForm}>
-              Recevoir l'audio gratuitement
+              Recevoir mon audio gratuit
             </Button>
           </div>
         </section>
